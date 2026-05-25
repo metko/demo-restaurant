@@ -37,7 +37,7 @@ jobs:
           # Use fetch-depth: 1 to save minutes on large repos.
           fetch-depth: 0
 
-      - uses: anthropics/claude-code-action@v1
+      - uses: anthropics/claude-code-action@beta
         with:
           # --- Authentication (pick ONE) ---
 
