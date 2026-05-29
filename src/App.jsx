@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { dishes } from "./data";
+import { dishes, deliveryInfo } from "./data";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import PaymentModal from "./components/PaymentModal";
@@ -28,6 +28,9 @@ export default function App() {
         <div style={{display:"flex",alignItems:"center",gap:"12px"}}>
           <img src="/restaurant-demo/deliveroo-logo.png" alt="Deliveroo" height="36" />
           <h1>roo<span style={{color:"#1a271f"}}>food</span></h1>
+          <span className="delivery-eta">
+            🛵 Delivery in {deliveryInfo.etaMin}–{deliveryInfo.etaMax} min
+          </span>
         </div>
         <div className="cart-badge-wrapper">
           <span className="cart-icon">🛒</span>

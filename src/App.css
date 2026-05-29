@@ -34,6 +34,19 @@ body {
   color: #00c1b2;
 }
 
+.delivery-eta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: #f1efe9;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1a271f;
+  white-space: nowrap;
+}
+
 .cart-badge-wrapper {
   position: relative;
   font-size: 1.5rem;

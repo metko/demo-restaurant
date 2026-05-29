@@ -1,0 +1,144 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - img "Deliveroo" [ref=e6]
+      - heading "roofood" [level=1] [ref=e7]
+    - generic [ref=e8] [cursor=pointer]:
+      - text: 🛒
+      - generic [ref=e128]: "2"
+  - main [ref=e9]:
+    - generic [ref=e10]:
+      - heading "Menu" [level=2] [ref=e11]
+      - generic [ref=e12]:
+        - button "All" [ref=e13] [cursor=pointer]
+        - button "Starters" [ref=e14] [cursor=pointer]
+        - button "Mains" [ref=e15] [cursor=pointer]
+        - button "Desserts" [ref=e16] [cursor=pointer]
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]: 🍞
+          - generic [ref=e20]:
+            - heading "Bruschetta" [level=3] [ref=e21]
+            - paragraph [ref=e22]: Toasted bread with tomatoes, garlic and fresh basil
+            - generic [ref=e23]:
+              - generic [ref=e24]: €6.50
+              - button "Add to cart" [ref=e25] [cursor=pointer]
+        - generic [ref=e26]:
+          - generic [ref=e27]: 🍲
+          - generic [ref=e28]:
+            - heading "Soup of the Day" [level=3] [ref=e29]
+            - paragraph [ref=e30]: Ask your waiter for today's homemade soup
+            - generic [ref=e31]:
+              - generic [ref=e32]: €5.00
+              - button "Add to cart" [ref=e33] [cursor=pointer]
+        - generic [ref=e34]:
+          - generic [ref=e35]: 🦐
+          - generic [ref=e36]:
+            - heading "Garlic Prawns" [level=3] [ref=e37]
+            - paragraph [ref=e38]: Sautéed king prawns in garlic butter and white wine
+            - generic [ref=e39]:
+              - generic [ref=e40]: €9.50
+              - button "Add to cart" [ref=e41] [cursor=pointer]
+        - generic [ref=e42]:
+          - generic [ref=e43]: 🥗
+          - generic [ref=e44]:
+            - heading "Caesar Salad" [level=3] [ref=e45]
+            - paragraph [ref=e46]: Romaine lettuce, parmesan, croutons and Caesar dressing
+            - generic [ref=e47]:
+              - generic [ref=e48]: €7.00
+              - button "Add to cart" [ref=e49] [cursor=pointer]
+        - generic [ref=e50]:
+          - generic [ref=e51]: 🍔
+          - generic [ref=e52]:
+            - heading "Classic Burger" [level=3] [ref=e53]
+            - paragraph [ref=e54]: Beef patty, cheddar, lettuce, tomato and pickles
+            - generic [ref=e55]:
+              - generic [ref=e56]: €14.00
+              - button "Add to cart" [ref=e57] [cursor=pointer]
+        - generic [ref=e58]:
+          - generic [ref=e59]: 🐟
+          - generic [ref=e60]:
+            - heading "Grilled Salmon" [level=3] [ref=e61]
+            - paragraph [ref=e62]: Atlantic salmon with lemon butter sauce and seasonal vegetables
+            - generic [ref=e63]:
+              - generic [ref=e64]: €18.50
+              - button "Add to cart" [ref=e65] [cursor=pointer]
+        - generic [ref=e66]:
+          - generic [ref=e67]: 🍕
+          - generic [ref=e68]:
+            - heading "Margherita Pizza" [level=3] [ref=e69]
+            - paragraph [ref=e70]: San Marzano tomato sauce, fresh mozzarella and basil
+            - generic [ref=e71]:
+              - generic [ref=e72]: €13.00
+              - button "Add to cart" [ref=e73] [cursor=pointer]
+        - generic [ref=e74]:
+          - generic [ref=e75]: 🍚
+          - generic [ref=e76]:
+            - heading "Mushroom Risotto" [level=3] [ref=e77]
+            - paragraph [ref=e78]: Arborio rice with wild mushrooms, white wine and parmesan
+            - generic [ref=e79]:
+              - generic [ref=e80]: €15.00
+              - button "Add to cart" [ref=e81] [cursor=pointer]
+        - generic [ref=e82]:
+          - generic [ref=e83]: 🍛
+          - generic [ref=e84]:
+            - heading "Chicken Tikka Masala" [level=3] [ref=e85]
+            - paragraph [ref=e86]: Tender chicken in a rich tomato and cream sauce with rice
+            - generic [ref=e87]:
+              - generic [ref=e88]: €16.00
+              - button "Add to cart" [ref=e89] [cursor=pointer]
+        - generic [ref=e90]:
+          - generic [ref=e91]: 🍫
+          - generic [ref=e92]:
+            - heading "Chocolate Lava Cake" [level=3] [ref=e93]
+            - paragraph [ref=e94]: Warm chocolate cake with a molten centre and vanilla ice cream
+            - generic [ref=e95]:
+              - generic [ref=e96]: €7.50
+              - button "Add to cart" [ref=e97] [cursor=pointer]
+        - generic [ref=e98]:
+          - generic [ref=e99]: 🍮
+          - generic [ref=e100]:
+            - heading "Crème Brûlée" [level=3] [ref=e101]
+            - paragraph [ref=e102]: Classic French vanilla custard with a caramelised sugar crust
+            - generic [ref=e103]:
+              - generic [ref=e104]: €6.50
+              - button "Add to cart" [ref=e105] [cursor=pointer]
+        - generic [ref=e106]:
+          - generic [ref=e107]: ☕
+          - generic [ref=e108]:
+            - heading "Tiramisu" [level=3] [ref=e109]
+            - paragraph [ref=e110]: Italian coffee-soaked ladyfingers with mascarpone cream
+            - generic [ref=e111]:
+              - generic [ref=e112]: €7.00
+              - button "Add to cart" [ref=e113] [cursor=pointer]
+    - complementary [ref=e114]:
+      - heading "Your Order" [level=2] [ref=e115]
+      - list [ref=e129]:
+        - listitem [ref=e130]:
+          - generic [ref=e131]: 🍔
+          - generic [ref=e132]:
+            - generic [ref=e133]: Classic Burger
+            - generic [ref=e134]: x1
+          - generic [ref=e135]: €14.00
+          - button "✕" [ref=e136] [cursor=pointer]
+        - listitem [ref=e137]:
+          - generic [ref=e138]: 🥗
+          - generic [ref=e139]:
+            - generic [ref=e140]: Caesar Salad
+            - generic [ref=e141]: x1
+          - generic [ref=e142]: €7.00
+          - button "✕" [ref=e143] [cursor=pointer]
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - generic [ref=e119]: Subtotal
+          - generic [ref=e120]: €21.00
+        - generic [ref=e121]:
+          - generic [ref=e122]: Tax (10%)
+          - generic [ref=e123]: €4.20
+        - generic [ref=e124]:
+          - generic [ref=e125]: Total
+          - generic [ref=e126]: €25.20
+      - button "Place Order" [ref=e127] [cursor=pointer]
+  - generic [ref=e187]:
+    - paragraph [ref=e189]: Processing your payment…
+    - paragraph [ref=e190]: Please do not close this window.

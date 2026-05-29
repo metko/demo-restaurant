@@ -1,3 +1,8 @@
+export const deliveryInfo = {
+  etaMin: 25,
+  etaMax: 35, // average delivery estimate, in minutes
+};
+
 export const dishes = [
   { id: 1, name: "Bruschetta", description: "Toasted bread with tomatoes, garlic and fresh basil", price: 6.5, category: "Starters", emoji: "🍞" },
   { id: 2, name: "Soup of the Day", description: "Ask your waiter for today's homemade soup", price: 5.0, category: "Starters", emoji: "🍲" },
