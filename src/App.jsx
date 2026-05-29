@@ -29,7 +29,9 @@ export default function App() {
           <img src="/restaurant-demo/deliveroo-logo.png" alt="Deliveroo" height="36" />
           <h1>roo<span style={{color:"#1a271f"}}>food</span></h1>
           <span className="delivery-eta">
-            🛵 Delivery in {deliveryInfo.etaMin}–{deliveryInfo.etaMax} min
+            <span className="eta-dot" />
+            <span className="eta-icon">🛵</span>
+            Delivery in {deliveryInfo.etaMin}–{deliveryInfo.etaMax} min
           </span>
         </div>
         <div className="cart-badge-wrapper">
