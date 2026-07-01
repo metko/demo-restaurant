@@ -91,6 +91,80 @@ body {
   justify-content: center;
 }
 
+/* ─── Search bar ──────────────────────────────────────── */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 420px;
+  margin: 0 24px;
+  padding: 7px 12px;
+  background: #f8f4ef;
+  border: 1px solid #e8e4df;
+  border-radius: 999px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.search-bar:focus-within {
+  border-color: #00c1b2;
+  box-shadow: 0 0 0 3px rgba(0, 193, 178, 0.15);
+}
+
+.search-icon {
+  font-size: 0.9rem;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #1a271f;
+}
+
+.search-input::placeholder {
+  color: #9aa39c;
+}
+
+/* Hide the native clear affordance; we render our own. */
+.search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-clear {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: #d8d4cf;
+  color: #ffffff;
+  font-size: 0.7rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.search-clear:hover {
+  background: #00c1b2;
+}
+
+.menu-no-results {
+  font-size: 0.95rem;
+  color: #6b7c71;
+  padding: 24px 0;
+}
+
 /* ─── Layout ──────────────────────────────────────────── */
 .app-main {
   display: flex;
@@ -903,6 +977,22 @@ body {
 .tracking-neworder--emphasized {
   box-shadow: 0 6px 20px rgba(0, 193, 178, 0.4);
   transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .search-bar {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+    margin: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

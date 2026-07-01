@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { dishes, deliveryInfo } from "./data";
+import { searchDishes, MIN_QUERY_LENGTH } from "./searchDishes";
 import Menu from "./components/Menu";
+import SearchBar from "./components/SearchBar";
 import Cart from "./components/Cart";
 import PaymentModal from "./components/PaymentModal";
 import OrderTracking from "./components/OrderTracking";
@@ -9,6 +11,7 @@ import "./App.css";
 export default function App() {
   const [cart, setCart] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
   const [showPayment, setShowPayment] = useState(false);
   const [view, setView] = useState("shop"); // "shop" | "tracking"
   const [activeOrder, setActiveOrder] = useState(null);
@@ -39,6 +42,15 @@ export default function App() {
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
+  // Search wins over the category filter: a non-empty query shows ranked
+  // results across all categories; an empty query reverts to category browsing.
+  const isSearching = searchQuery.trim().length >= MIN_QUERY_LENGTH;
+  const visibleDishes = isSearching
+    ? searchDishes(dishes, searchQuery)
+    : selectedCategory === "All"
+    ? dishes
+    : dishes.filter((dish) => dish.category === selectedCategory);
+
   return (
     <div className="app">
       <header className="app-header">
@@ -53,6 +65,9 @@ export default function App() {
             </span>
           )}
         </div>
+        {view === "shop" && (
+          <SearchBar query={searchQuery} onQueryChange={setSearchQuery} />
+        )}
         <div className="cart-badge-wrapper">
           <span className="cart-icon">🛒</span>
           {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
@@ -62,10 +77,12 @@ export default function App() {
       {view === "shop" ? (
         <main className="app-main">
           <Menu
-            dishes={dishes}
+            dishes={visibleDishes}
             selectedCategory={selectedCategory}
             onCategoryChange={setSelectedCategory}
             onAddToCart={addToCart}
+            isSearching={isSearching}
+            query={searchQuery}
           />
           <Cart cart={cart} onRemove={removeFromCart} onCheckout={() => setShowPayment(true)} />
         </main>
