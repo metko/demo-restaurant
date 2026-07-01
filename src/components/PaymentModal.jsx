@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { deliveryInfo } from "../data";
+import OrderItemList from "./OrderItemList";
 
 function generateOrderNumber() {
   return "DL-" + Math.floor(10000 + Math.random() * 90000);
 }
+
+// Seconds the "See my order" button waits before auto-advancing.
+const AUTO_ADVANCE_SECONDS = 5;
 
 export default function PaymentModal({ cart, onClose, onSuccess }) {
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -12,12 +17,52 @@ export default function PaymentModal({ cart, onClose, onSuccess }) {
   const [step, setStep] = useState("summary");
   const [orderNumber] = useState(generateOrderNumber);
   const [orderTime] = useState(() => new Date());
+  const [etaSeed] = useState(
+    () =>
+      deliveryInfo.etaMin +
+      Math.floor(Math.random() * (deliveryInfo.etaMax - deliveryInfo.etaMin + 1))
+  );
   const [form, setForm] = useState({ name: "", number: "", expiry: "", cvv: "" });
+  const [countdown, setCountdown] = useState(AUTO_ADVANCE_SECONDS);
+
+  // Guard so click + auto-timer can never both fire onSuccess.
+  const firedRef = useRef(false);
+
+  function fireSuccess() {
+    if (firedRef.current) return;
+    firedRef.current = true;
+    onSuccess({
+      orderNumber,
+      orderTime,
+      items: cart,
+      subtotal,
+      tax,
+      total,
+      etaMinutes: etaSeed,
+    });
+  }
 
   useEffect(() => {
     if (step !== "processing") return;
     const timer = setTimeout(() => setStep("success"), 2000);
     return () => clearTimeout(timer);
+  }, [step]);
+
+  // Success step: visible draining countdown that auto-advances at 0.
+  useEffect(() => {
+    if (step !== "success") return;
+    const interval = setInterval(() => {
+      setCountdown((c) => {
+        if (c <= 1) {
+          clearInterval(interval);
+          fireSuccess();
+          return 0;
+        }
+        return c - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
   function handleOverlayClick() {
@@ -57,16 +102,7 @@ export default function PaymentModal({ cart, onClose, onSuccess }) {
         {step === "summary" && (
           <div className="modal-step">
             <h2 className="modal-title">Order Summary</h2>
-            <ul className="modal-item-list">
-              {cart.map((item, i) => (
-                <li key={i} className="modal-item-row">
-                  <span className="modal-item-emoji">{item.emoji}</span>
-                  <span className="modal-item-name">{item.name}</span>
-                  <span className="modal-item-qty">x{item.quantity}</span>
-                  <span className="modal-item-price">€{(item.price * item.quantity).toFixed(2)}</span>
-                </li>
-              ))}
-            </ul>
+            <OrderItemList items={cart} />
             <div className="modal-totals">
               <div className="modal-totals-row">
                 <span>Subtotal</span><span>€{subtotal.toFixed(2)}</span>
@@ -164,23 +200,21 @@ export default function PaymentModal({ cart, onClose, onSuccess }) {
             <div className="success-icon">✓</div>
             <h2 className="success-title">Payment Successful!</h2>
             <p className="success-meta">Order {orderNumber} · {formattedTime}</p>
-            <ul className="modal-item-list modal-item-list--receipt">
-              {cart.map((item, i) => (
-                <li key={i} className="modal-item-row">
-                  <span className="modal-item-emoji">{item.emoji}</span>
-                  <span className="modal-item-name">{item.name}</span>
-                  <span className="modal-item-qty">x{item.quantity}</span>
-                  <span className="modal-item-price">€{(item.price * item.quantity).toFixed(2)}</span>
-                </li>
-              ))}
-            </ul>
+            <OrderItemList items={cart} className="modal-item-list--receipt" />
             <div className="modal-totals">
               <div className="modal-totals-row modal-totals-total">
                 <span>Total paid</span><span>€{total.toFixed(2)}</span>
               </div>
             </div>
-            <button className="modal-btn-primary modal-btn-full" onClick={onSuccess}>
-              Start New Order
+            <button
+              className="modal-btn-primary modal-btn-full see-order-btn"
+              onClick={fireSuccess}
+            >
+              See my order ({countdown}s)
+              <span
+                className="see-order-progress"
+                style={{ transform: `scaleX(${countdown / AUTO_ADVANCE_SECONDS})` }}
+              />
             </button>
           </div>
         )}

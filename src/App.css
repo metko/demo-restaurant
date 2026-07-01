@@ -627,3 +627,291 @@ body {
   color: #9aaba0;
   margin-bottom: 8px;
 }
+
+/* See-my-order countdown button */
+.see-order-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.see-order-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: left center;
+  background: rgba(255, 255, 255, 0.65);
+  transition: transform 1s linear;
+}
+
+/* ─── Order Tracking ──────────────────────────────────── */
+.tracking {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px 48px;
+  min-height: calc(100vh - 64px);
+}
+
+.tracking-panel {
+  width: 100%;
+  max-width: 560px;
+  background: #ffffff;
+  border: 1px solid #ede9e4;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 8px 32px rgba(26, 39, 31, 0.08);
+  height: fit-content;
+}
+
+.tracking-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tracking-order-no {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #9aaba0;
+}
+
+.tracking-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: #1a271f;
+  margin-top: 2px;
+}
+
+.tracking-eta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  background: linear-gradient(135deg, #e6faf8 0%, #d4f5f1 100%);
+  border: 1px solid #b8ebe5;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #008f84;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.eta-dot--static {
+  animation: none !important;
+}
+
+/* Map */
+.tracking-map {
+  width: 100%;
+}
+
+.tracking-map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.map-bg {
+  fill: #eef6f3;
+  stroke: #dcebe5;
+  stroke-width: 1;
+}
+
+.map-route {
+  stroke: #b8ebe5;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 4 7;
+}
+
+.map-pin {
+  stroke: #ffffff;
+  stroke-width: 2.5;
+}
+
+.map-pin--restaurant {
+  fill: #1a271f;
+}
+
+.map-pin--home {
+  fill: #00c1b2;
+}
+
+.map-pin-emoji,
+.map-rider-emoji {
+  font-size: 13px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.map-rider-halo {
+  fill: rgba(0, 193, 178, 0.22);
+}
+
+.map-rider-emoji {
+  font-size: 16px;
+}
+
+.map-rider--snap {
+  transition: none;
+}
+
+/* Timeline */
+.stage-timeline {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  counter-reset: stage;
+  padding-left: 4px;
+}
+
+.stage-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  position: relative;
+}
+
+.stage-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 30px;
+  bottom: -6px;
+  width: 2px;
+  background: #ede9e4;
+}
+
+.stage-item--done:not(:last-child)::after {
+  background: #00c1b2;
+}
+
+.stage-marker {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid #ede9e4;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  z-index: 1;
+}
+
+.stage-item--done .stage-marker {
+  background: #00c1b2;
+  border-color: #00c1b2;
+}
+
+.stage-item--current .stage-marker {
+  border-color: #00c1b2;
+  box-shadow: 0 0 0 4px rgba(0, 193, 178, 0.16);
+}
+
+.stage-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #9aaba0;
+}
+
+.stage-item--done .stage-label {
+  color: #6b7c71;
+}
+
+.stage-item--current .stage-label {
+  color: #1a271f;
+  font-weight: 800;
+}
+
+/* Rider card */
+.rider-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #f8f4ef;
+  border: 1px solid #ede9e4;
+  border-radius: 12px;
+}
+
+.rider-avatar {
+  font-size: 1.9rem;
+  line-height: 1;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #ede9e4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rider-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rider-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1a271f;
+}
+
+.rider-role {
+  font-size: 0.8rem;
+  color: #6b7c71;
+  font-weight: 500;
+}
+
+/* Summary */
+.tracking-summary {
+  border-top: 1px solid #ede9e4;
+  padding-top: 18px;
+}
+
+.tracking-summary-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #9aaba0;
+  margin-bottom: 14px;
+}
+
+.tracking-summary .modal-totals {
+  margin-bottom: 0;
+}
+
+.tracking-neworder--emphasized {
+  box-shadow: 0 6px 20px rgba(0, 193, 178, 0.4);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eta-dot,
+  .spinner {
+    animation: none !important;
+  }
+  .see-order-progress,
+  .map-rider {
+    transition: none !important;
+  }
+}
